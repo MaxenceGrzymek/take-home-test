@@ -4,6 +4,29 @@ export class Drug {
     this.expiresIn = expiresIn;
     this.benefit = benefit;
   }
+
+   update(){
+    this.updateExpiration();
+    this.updateBenefit();
+  }
+
+  updateBenefit(){
+    if(this.benefit >0){
+      this.benefit -=1;
+    }
+    if(this.benefit >0 && this.expiresIn <0){
+      this.benefit -=1;
+    }
+  }
+
+  updateExpiration(){
+    this.expiresIn -=1;
+  }
+
+  adjustBenefit(amount){
+    this.benefit = Math.min(50,Math.max(0,this.benefit + amount));
+  }
+
 }
 
 export class Pharmacy {
